@@ -15,7 +15,8 @@
     "cookie-parser": "*",
     "ejs": "^2.5.6",
     "express": "*",
-    "nodemon": "*"
+    "nodemon": "*",
+    "express-ejs-layouts": "*"
   },
   "author": "Binod",
   "license": "ISC",

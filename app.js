@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
@@ -15,6 +16,10 @@ app.set('view engine', 'ejs');
 
 //Body parser middleware
 // parse application/x-www-form-urlencoded.
+
+app.use(expressLayouts);
+app.set('layout', 'layouts/default');
+app.set('layout extractScripts', true);
 
 app.use(cookieParser());
 app.use(bodyParser.json({limit: "50mb"}));
