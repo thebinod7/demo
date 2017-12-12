@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const helpers = require('./helpers');
 
 require('dotenv').config({ path: 'variables.env' });
 
@@ -30,6 +31,12 @@ app.set('layout extractScripts', true);
 app.use(cookieParser());
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+
+// app.use((req,res,next) => {
+//   console.log('Helpers:',helpers);
+//   res.locals.h = helpers;
+//   next;
+// });
 
 
 // ROUTES FOR OUR API

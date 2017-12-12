@@ -19,6 +19,7 @@
     "ejs": "^2.5.6",
     "express": "*",
     "express-ejs-layouts": "*",
+    "helper": "0.0.13",
     "mongoose": "^4.13.7",
     "nodemon": "*"
   },
