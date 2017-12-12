@@ -3,11 +3,17 @@ const path = require('path');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+
+require('dotenv').config({ path: 'variables.env' });
+
+mongoose.connect(process.env.DATABASE);
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => {
+  console.log(err.message);
+});
 
 const app = express();
-
-//const apiCategory = require('./routes/category');
-const port = 1221;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +37,6 @@ app.use('/', require('./routes'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Start server
-app.listen(port,function () {
-    console.log('Server running at port:' + port);
+app.listen(process.env.PORT,function () {
+    console.log('Server running at port:' + process.env.PORT);
 });
