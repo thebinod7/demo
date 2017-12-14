@@ -24,6 +24,24 @@ app.set('view engine', 'ejs');
 //Body parser middleware
 // parse application/x-www-form-urlencoded.
 
+function hello(req,res,next){
+  res.write('Hello \n');
+  next();
+}
+
+function logger(req,res,next){
+  console.log(new Date(), req.method, req.url);
+  next();
+}
+
+function bye(req,res,next){
+  res.write('Bye \n');
+  res.end();
+}
+
+app.use(logger);
+app.use('/hello', hello, bye);
+
 app.use(expressLayouts);
 app.set('layout', 'layouts/default');
 app.set('layout extractScripts', true);
